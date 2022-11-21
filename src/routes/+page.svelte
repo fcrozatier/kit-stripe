@@ -69,7 +69,7 @@
   }
 </script>
 
-<section class="layout-center">
+<article class="layout-center">
   <h1>Stripe payment integration demo</h1>
   {#if stripe}
     <form
@@ -105,10 +105,10 @@
   {:else}
     Loading payment form...
   {/if}
-</section>
+</article>
 
 <style>
-  .layout-center {
+  :global(.layout-center) {
     max-width: 60ch;
     margin-inline: auto;
     margin-top: 10px;

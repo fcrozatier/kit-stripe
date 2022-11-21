@@ -1,11 +1,6 @@
 import type { PageServerLoad } from "./$types";
-import { PRIVATE_STRIPE_API_KEY } from "$env/static/private";
-import Stripe from "stripe";
 import { error } from "@sveltejs/kit";
-
-const stripe = new Stripe(PRIVATE_STRIPE_API_KEY, {
-  apiVersion: "2022-11-15",
-});
+import { stripe } from "$lib/stripe";
 
 export const load: PageServerLoad = async () => {
   const paymentIntent = await stripe.paymentIntents.create({
