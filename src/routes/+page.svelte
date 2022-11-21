@@ -33,7 +33,7 @@
     if (stripeLoaded) {
       stripe = stripeLoaded;
 
-      // Mount elements in the next cycle to prevent IntegrationError. This leaves time for the #payment-element div to appear on the page after the #if updates.
+      // Mount elements in the next cycle to prevent IntegrationError. This leaves time for the #payment-element div to appear after the {#if stripe} updates.
       await tick();
 
       elements = stripe.elements({
@@ -128,5 +128,9 @@
     color: white;
     border: none;
     cursor: pointer;
+  }
+
+  .error-message {
+    color: red;
   }
 </style>
