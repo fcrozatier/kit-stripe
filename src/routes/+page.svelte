@@ -22,8 +22,8 @@
 
   let stripe: Stripe;
   let elements: StripeElements;
-  let submitButton: HTMLButtonElement;
 
+  let isLoading = false;
   let paymentError: StripeErrorType | null = null;
 
   onMount(async () => {
@@ -46,7 +46,7 @@
   });
 
   async function handleSubmit() {
-    setLoading(true);
+    isLoading = true;
 
     const { error } = await stripe.confirmPayment({
       elements,
@@ -65,17 +65,7 @@
       paymentError = error.type;
     }
 
-    setLoading(false);
-  }
-
-  function setLoading(isLoading: Boolean) {
-    if (isLoading) {
-      submitButton.disabled = true;
-      submitButton.innerText = "Validating your transaction";
-    } else {
-      submitButton.disabled = false;
-      submitButton.innerText = "Confirm payment";
-    }
+    isLoading = false;
   }
 </script>
 
@@ -91,7 +81,13 @@
       <div id="payment-element">
         <!--Stripe.js injects the Payment Element-->
       </div>
-      <button id="submit" bind:this={submitButton}> Confirm payment </button>
+      <button id="submit" disabled={isLoading}>
+        {#if isLoading}
+          Validating your transaction...
+        {:else}
+          Confirm payment
+        {/if}
+      </button>
       <p id="payment-error" class="error-message" aria-live="polite">
         {#if paymentError}
           {#if paymentError === "api_connection_error" || paymentError === "api_error"}
@@ -120,10 +116,11 @@
 
   #submit {
     display: block;
+    min-width: 100%;
     margin-top: 20px;
-    padding: 10px 20px;
+    padding: 10px 30px;
     border-radius: 4px;
-    font-weight: 500;
+    font-size: 18px;
     background-color: #5925dc;
     color: white;
     border: none;
