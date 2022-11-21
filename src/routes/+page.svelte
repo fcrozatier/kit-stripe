@@ -121,12 +121,12 @@
   #submit {
     display: block;
     margin-top: 20px;
-    background-color: #5925dc;
-    color: white;
-    cursor: pointer;
     padding: 10px 20px;
     border-radius: 4px;
     font-weight: 500;
+    background-color: #5925dc;
+    color: white;
     border: none;
+    cursor: pointer;
   }
 </style>
