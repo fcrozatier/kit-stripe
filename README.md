@@ -1,6 +1,6 @@
 # Stripe integration demo in a sveltekit app
 
-This is a demo project to help you integrate Stripe in a Sveltekit app:
+This is a demo project to help you integrate [Stripe](https://stripe.com/en-fr) to your [Sveltekit](https://kit.svelte.dev/) app:
 
 - No wrapper libraries used, just `sveltekit` and `stripe`
 - Accessibility taken into account
