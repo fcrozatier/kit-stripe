@@ -6,7 +6,7 @@
     type StripeElements,
     type StripeErrorType,
   } from "@stripe/stripe-js";
-  import { PUBLIC_STRIPE_API_TEST_KEY } from "$env/static/public";
+  import { PUBLIC_STRIPE_API_KEY } from "$env/static/public";
   import { onMount, tick } from "svelte";
   import type { PageData } from "./$types";
 
@@ -27,7 +27,7 @@
   let paymentError: StripeErrorType | null = null;
 
   onMount(async () => {
-    const stripeLoaded = await loadStripe(PUBLIC_STRIPE_API_TEST_KEY, {
+    const stripeLoaded = await loadStripe(PUBLIC_STRIPE_API_KEY, {
       locale: "en",
     });
     if (stripeLoaded) {
@@ -68,12 +68,8 @@
     setLoading(false);
   }
 
-  // UI helpers
-
-  // Show a spinner on payment submission
   function setLoading(isLoading: Boolean) {
     if (isLoading) {
-      // Disable the button and show a spinner
       submitButton.disabled = true;
       submitButton.innerText = "Validating your transaction";
     } else {

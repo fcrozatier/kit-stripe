@@ -1,9 +1,9 @@
 import type { PageServerLoad } from "./$types";
-import { PRIVATE_STRIPE_API_TEST_KEY } from "$env/static/private";
+import { PRIVATE_STRIPE_API_KEY } from "$env/static/private";
 import Stripe from "stripe";
 import { error } from "@sveltejs/kit";
 
-const stripe = new Stripe(PRIVATE_STRIPE_API_TEST_KEY, {
+const stripe = new Stripe(PRIVATE_STRIPE_API_KEY, {
   apiVersion: "2022-11-15",
 });
 
@@ -14,7 +14,6 @@ export const load: PageServerLoad = async () => {
     payment_method_types: ["card"],
   });
 
-  console.log(paymentIntent.client_secret);
   if (!paymentIntent.client_secret) {
     throw error(400);
   }
