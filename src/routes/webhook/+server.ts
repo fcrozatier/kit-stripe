@@ -5,7 +5,7 @@ import type Stripe from "stripe";
 
 export const POST: RequestHandler = async function ({ request }) {
   const signature = request.headers.get("stripe-signature");
-  const payload = await request.text();
+  const payload = Buffer.from(await request.arrayBuffer());
 
   if (!signature) {
     throw error(400, "no_signature");

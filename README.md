@@ -4,7 +4,7 @@ This is a demo project to help you integrate [Stripe](https://stripe.com) to you
 
 - No wrapper libraries used, just `sveltekit` and `stripe`
 - Validation errors
-- Redirect thanks page
+- Redirect url
 - Webhooks
 - Accessibility
 
