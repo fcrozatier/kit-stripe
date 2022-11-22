@@ -1,5 +1,5 @@
 import { error, type RequestHandler } from "@sveltejs/kit";
-import { stripe } from "$lib/stripe";
+import { stripe } from "$lib/server/stripe";
 import { STRIPE_WEBHOOK_SECRET } from "$env/static/private";
 import type Stripe from "stripe";
 

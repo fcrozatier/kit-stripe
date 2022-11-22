@@ -1,6 +1,6 @@
 import type { PageServerLoad } from "./$types";
 import { error } from "@sveltejs/kit";
-import { stripe } from "$lib/stripe";
+import { stripe } from "$lib/server/stripe";
 
 export const load: PageServerLoad = async () => {
   const paymentIntent = await stripe.paymentIntents.create({

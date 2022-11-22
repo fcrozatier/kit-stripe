@@ -1,6 +1,6 @@
 import { error } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
-import { stripe } from "$lib/stripe";
+import { stripe } from "$lib/server/stripe";
 
 export const load: PageServerLoad = async ({ url }) => {
   const payment_intent = url.searchParams.get("payment_intent");
